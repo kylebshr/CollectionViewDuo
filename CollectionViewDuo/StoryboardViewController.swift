@@ -28,10 +28,14 @@ class StoryboardViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Card", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Card", for: indexPath) as! StoryboardCardCell
         cell.contentView.backgroundColor = colors[indexPath.item]
-        let label = cell.viewWithTag(1) as! UILabel
-        label.text = String(repeating: "Lorem ipsum dolor sit amet. ", count: indexPath.item % 4 + 1)
+        cell.label.text = String(repeating: "Lorem ipsum dolor sit amet. ", count: indexPath.item % 4 + 1)
         return cell
     }
+}
+
+class StoryboardCardCell: UICollectionViewCell {
+
+    @IBOutlet var label: UILabel!
 }
